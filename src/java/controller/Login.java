@@ -98,7 +98,7 @@ public class Login implements Serializable {
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
                             "Usuario y Contraseña Inconrrecta",
-                            "Please enter correct username and Password"));
+                            "Por favor ingrese Usuario y Contrasena Correcta"));
             }
 
         } else {
