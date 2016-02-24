@@ -1,0 +1,44 @@
+body {
+    background-image: url(../images/tooplate_body_home.jpg) ;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000000;  
+    margin: 10px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.4em; 
+	background-color: #efefef; 
+	background-position: top;
+	background-repeat: repeat-x;
+}
+.section_wrapper {
+	width: 100%;
+}
+
+#tooplate_header_wrapper {
+	height: 124px;
+	margin-bottom: 40px;
+	background: url(../images/tooplate_header.png) top repeat-x
+}
+
+h1 {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    border-bottom: 1px solid #AFAFAF; 
+    font-size:  16px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #D20005;
+}
+
+a:link, a:visited {
+  color: #045491;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+  color: #045491;
+  font-weight : bold;
+  text-decoration : underline;
+}

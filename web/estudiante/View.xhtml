@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstudianteViewDlg" widgetVar="EstudianteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEstudianteTitle}">
+            <h:form id="EstudianteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estudianteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_apellidoPaterno}"/>
+                        <h:outputText value="#{estudianteController.selected.apellidoPaterno}" title="#{bundle.ViewEstudianteTitle_apellidoPaterno}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_apellidoMaterno}"/>
+                        <h:outputText value="#{estudianteController.selected.apellidoMaterno}" title="#{bundle.ViewEstudianteTitle_apellidoMaterno}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_nombres}"/>
+                        <h:outputText value="#{estudianteController.selected.nombres}" title="#{bundle.ViewEstudianteTitle_nombres}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_cedula}"/>
+                        <h:outputText value="#{estudianteController.selected.cedula}" title="#{bundle.ViewEstudianteTitle_cedula}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_carrera}"/>
+                        <h:outputText value="#{estudianteController.selected.carrera}" title="#{bundle.ViewEstudianteTitle_carrera}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_curso}"/>
+                        <h:outputText value="#{estudianteController.selected.curso}" title="#{bundle.ViewEstudianteTitle_curso}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_codigoMatricula}"/>
+                        <h:outputText value="#{estudianteController.selected.codigoMatricula}" title="#{bundle.ViewEstudianteTitle_codigoMatricula}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_direccion}"/>
+                        <h:outputText value="#{estudianteController.selected.direccion}" title="#{bundle.ViewEstudianteTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_telefono}"/>
+                        <h:outputText value="#{estudianteController.selected.telefono}" title="#{bundle.ViewEstudianteTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_celular}"/>
+                        <h:outputText value="#{estudianteController.selected.celular}" title="#{bundle.ViewEstudianteTitle_celular}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_correo}"/>
+                        <h:outputText value="#{estudianteController.selected.correo}" title="#{bundle.ViewEstudianteTitle_correo}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_correoUce}"/>
+                        <h:outputText value="#{estudianteController.selected.correoUce}" title="#{bundle.ViewEstudianteTitle_correoUce}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_correoContacto}"/>
+                        <h:outputText value="#{estudianteController.selected.correoContacto}" title="#{bundle.ViewEstudianteTitle_correoContacto}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_estadoCivil}"/>
+                        <h:outputText value="#{estudianteController.selected.estadoCivil}" title="#{bundle.ViewEstudianteTitle_estadoCivil}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_pais}"/>
+                        <h:outputText value="#{estudianteController.selected.pais}" title="#{bundle.ViewEstudianteTitle_pais}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_provincia}"/>
+                        <h:outputText value="#{estudianteController.selected.provincia}" title="#{bundle.ViewEstudianteTitle_provincia}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_canton}"/>
+                        <h:outputText value="#{estudianteController.selected.canton}" title="#{bundle.ViewEstudianteTitle_canton}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_sexo}"/>
+                        <h:outputText value="#{estudianteController.selected.sexo}" title="#{bundle.ViewEstudianteTitle_sexo}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_nacionalidad}"/>
+                        <h:outputText value="#{estudianteController.selected.nacionalidad}" title="#{bundle.ViewEstudianteTitle_nacionalidad}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EstudianteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

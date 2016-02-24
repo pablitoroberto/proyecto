@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="../Administrador/TemplateAdministrador.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDocenteTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="content">
+            <h:form id="DocenteListForm">
+                <p:panel header="#{bundle.ListDocenteTitle}">
+                    <p:dataTable id="datalist" value="#{docenteController.items}" var="item"
+                                 selectionMode="single" selection="#{docenteController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idDocente}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                       
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocenteTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocenteTitle_ci}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ci}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocenteTitle_emailInstitucional}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailInstitucional}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocenteTitle_emailPersonal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailPersonal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocenteTitle_categoria}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.categoria}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocenteTitle_dedicacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dedicacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocenteTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocenteTitle_tiempohora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tiempohora}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{docenteController.prepareCreate}" update=":DocenteCreateForm" oncomplete="PF('DocenteCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":DocenteViewForm" oncomplete="PF('DocenteViewDialog').show()" disabled="#{empty docenteController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":DocenteEditForm" oncomplete="PF('DocenteEditDialog').show()" disabled="#{empty docenteController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{docenteController.destroy}" update=":growl,datalist" disabled="#{empty docenteController.selected}">
+                                <p:confirm header="Confirmacion" message="Esta Usted Seguro ?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

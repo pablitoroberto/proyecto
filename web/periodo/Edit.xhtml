@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PeriodoEditDlg" widgetVar="PeriodoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPeriodoTitle}">
+            <h:form id="PeriodoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{periodoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPeriodoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{periodoController.selected.nombre}" title="#{bundle.EditPeriodoTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditPeriodoLabel_vigente}" for="vigente" />
+                        <p:inputText id="vigente" value="#{periodoController.selected.vigente}" title="#{bundle.EditPeriodoTitle_vigente}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{periodoController.update}" value="#{bundle.Save}" update="display,:PeriodoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PeriodoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PeriodoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

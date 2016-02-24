@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./TemplateDocente.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <ui:define name="bottom">
+
+        <h:outputText value="Bienvenido "/>
+        <h:outputText value="#{docenteBean.nombre}"/>
+
+
+        <h:form>
+            <h:panelGrid columns="8" style="width:100%">
+                <p:outputLabel value="Carrera:   " />
+                <p:selectOneMenu value="#{dropdownView.idcarrera}">
+                    <f:selectItem itemLabel="Seleccione Carrera" itemValue="" noSelectionOption="true" />
+
+                    <f:selectItems value="#{dropdownView.cmb1}"/>
+                    <p:ajax event="change" listener="#{dropdownView.obtenerinfomracion()}" update="idmateria" />
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Materia :   " />
+                
+                <p:selectOneMenu id="idmateria" value="#{dropdownView.idmateria}">
+                    <f:selectItem itemLabel="Seleccione Materia" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{dropdownView.mbmateria.lst}"/>
+                    <p:ajax event="change" listener="#{dropdownView.addAction()}"/>
+                </p:selectOneMenu>
+                
+                <p:commandButton value="AGREGAR" onclick="location = '/sistemaHorario2016/faces/docente/docente.xhtml'" />
+            </h:panelGrid>
+        </h:form>
+        <p:separator />
+        <h:form>
+            <p:dataTable value="#{dropdownView.orderList}" var="o">
+
+                <p:column>
+
+                    <f:facet name="header">CARRERA </f:facet>
+                        #{o.nombrecarrera}
+
+                </p:column>
+
+                <p:column>
+
+                    <f:facet name="header">MATERIA</f:facet>
+                        #{o.nombremateria}
+
+                </p:column>
+
+                <p:column>
+
+                    <f:facet name="header">ACCION</f:facet>
+
+                    <p:commandButton value="ELIMINAR" action="#{dropdownView.deleteAction(o)}" onclick="location = '/sistemaHorario2016/faces/docente/docente.xhtml'" />
+
+
+                </p:column>
+
+            </p:dataTable>
+
+
+
+
+        </h:form>
+
+        <p:separator />
+        <h:form>
+
+            <h:panelGrid columns="8" style="width:100%">
+                <p:outputLabel value="Dia   " />
+
+                <p:selectOneMenu id="dia" value="#{order.dia}" style="width:150px">
+                    <f:selectItem itemLabel="Seleccione One" itemValue="" noSelectionOption="true" />
+                    <f:selectItem itemLabel="LUNES" itemValue="LUNES"/>
+                    <f:selectItem itemLabel="MARTES" itemValue="MARTES"/>
+                    <f:selectItem itemLabel="MIERCOLES" itemValue="MIERCOLES"/>
+                    <f:selectItem itemLabel="JUEVES" itemValue="JUEVES"/>
+                    <f:selectItem itemLabel="VIERNES" itemValue="VIERNES"/>
+                </p:selectOneMenu>
+                <p:outputLabel value="Hora inicio" />
+
+                <p:selectOneMenu id="horaini" value="#{order.hora_inicio}" style="width:150px">
+                    <f:selectItem itemLabel="Seleccione Hora" itemValue="" noSelectionOption="true" />
+                    <f:selectItem itemLabel="7:00 AM" itemValue="7:00 AM"/>
+                    <f:selectItem itemLabel="8:00 AM" itemValue="8:00 AM"/>
+                    <f:selectItem itemLabel="9:00 AM" itemValue="9:00 AM"/>
+                    <f:selectItem itemLabel="10:00 AM" itemValue="10:00 AM"/>
+                    <f:selectItem itemLabel="11:00 AM" itemValue="11:00 AM"/>
+                    <f:selectItem itemLabel="12:00 PM" itemValue="12:00 PM"/>
+                    <f:selectItem itemLabel="1:00 PM" itemValue="1:00 PM"/>
+                    <f:selectItem itemLabel="2:00 PM" itemValue="2:00 PM"/>
+                    <f:selectItem itemLabel="3:00 PM" itemValue="3:00 PM"/>
+                    <f:selectItem itemLabel="4:00 PM" itemValue="4:00 PM"/>
+                    <f:selectItem itemLabel="5:00 PM" itemValue="5:00 PM"/>
+                    <f:selectItem itemLabel="6:00 PM" itemValue="6:00 PM"/>
+                    <f:selectItem itemLabel="7:00 PM" itemValue="7:00 PM"/>
+                    <f:selectItem itemLabel="8:00 PM" itemValue="8:00 PM"/>
+
+                </p:selectOneMenu>
+                <p:outputLabel value="Hora fin" />
+
+                <p:selectOneMenu id="horafin" value="#{order.hora_fin}" style="width:150px">
+                    <f:selectItem itemLabel="Seleccione Hora" itemValue="" noSelectionOption="true" />
+                    <f:selectItem itemLabel="8:00 AM" itemValue="8:00 AM"/>
+                    <f:selectItem itemLabel="9:00 AM" itemValue="9:00 AM"/>
+                    <f:selectItem itemLabel="10:00 AM" itemValue="10:00 AM"/>
+                    <f:selectItem itemLabel="11:00 AM" itemValue="11:00 AM"/>
+                    <f:selectItem itemLabel="12:00 PM" itemValue="12:00 PM"/>
+                    <f:selectItem itemLabel="1:00 PM" itemValue="1:00 PM"/>
+                    <f:selectItem itemLabel="2:00 PM" itemValue="2:00 PM"/>
+                    <f:selectItem itemLabel="3:00 PM" itemValue="3:00 PM"/>
+                    <f:selectItem itemLabel="4:00 PM" itemValue="4:00 PM"/>
+                    <f:selectItem itemLabel="5:00 PM" itemValue="5:00 PM"/>
+                    <f:selectItem itemLabel="6:00 PM" itemValue="6:00 PM"/>
+                    <f:selectItem itemLabel="7:00 PM" itemValue="7:00 PM"/>
+                    <f:selectItem itemLabel="8:00 PM" itemValue="8:00 PM"/>
+                    <f:selectItem itemLabel="9:00 PM" itemValue="9:00 PM"/>
+                </p:selectOneMenu>
+
+                <p:commandButton value="AGREGAR" action="#{order.addAction}" onclick="location = '/sistemaHorario2016/faces/docente/docente.xhtml'" />
+            </h:panelGrid>
+        </h:form>
+        <p:separator />
+        <h:form>
+            <p:dataTable value="#{order.orderList}" var="o"
+                         styleClass="order-table"
+
+                         >
+
+                <p:column>
+
+                    <f:facet name="header">DIA</f:facet>
+                        #{o.dia}
+
+                </p:column>
+
+                <p:column>
+
+                    <f:facet name="header">HORA INCIO</f:facet>
+                        #{o.hora_inicio}
+
+                </p:column>
+
+                <p:column>
+
+                    <f:facet name="header">HORA FIN</f:facet>
+                        #{o.hora_fin}
+
+                </p:column>
+
+                <p:column>
+
+                    <f:facet name="header">Action</f:facet>
+
+                    <p:commandButton value="ELIMINAR" action="#{order.deleteAction(o)}" onclick="location = '/sistemaHorario2016/faces/docente/docente.xhtml'" />
+
+                </p:column>
+
+            </p:dataTable>
+            <p:separator />
+            <div align="center">
+                <p:commandButton value="GUARDAR DATOS " onclick="location = '/sistemaHorario2016/faces/login.xhtml'"></p:commandButton>
+            </div>
+        </h:form>
+        
+
+    </ui:define>
+
+</ui:composition>

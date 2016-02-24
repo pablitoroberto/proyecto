@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DisponibilidadCreateDlg" widgetVar="DisponibilidadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDisponibilidadTitle}">
+            <h:form id="DisponibilidadCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{disponibilidadController.selected != null}">
+                         <p:outputLabel value="#{bundle.CreateDisponibilidadLabel_dia}" for="dia" />
+                        <p:inputText id="dia" value="#{disponibilidadController.selected.dia}" title="#{bundle.CreateDisponibilidadTitle_dia}" />
+                        <p:outputLabel value="#{bundle.CreateDisponibilidadLabel_horainicio}" for="horainicio" />
+                        <p:inputText id="horainicio" value="#{disponibilidadController.selected.horainicio}" title="#{bundle.CreateDisponibilidadTitle_horainicio}" />
+                        <p:outputLabel value="#{bundle.CreateDisponibilidadLabel_horafinal}" for="horafinal" />
+                        <p:inputText id="horafinal" value="#{disponibilidadController.selected.horafinal}" title="#{bundle.CreateDisponibilidadTitle_horafinal}" />
+                        <p:outputLabel value="#{bundle.CreateDisponibilidadLabel_observaciones}" for="observaciones" />
+                        <p:inputText id="observaciones" value="#{disponibilidadController.selected.observaciones}" title="#{bundle.CreateDisponibilidadTitle_observaciones}" />
+                        <p:outputLabel value="#{bundle.CreateDisponibilidadLabel_idDocente}" for="idDocente" />
+                        <p:selectOneMenu id="idDocente" value="#{disponibilidadController.selected.idDocente}" >
+                            <f:selectItems value="#{docenteController.itemsAvailableSelectOne}"
+                                           var="idDocenteItem"
+                                           itemValue="#{idDocenteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDisponibilidadLabel_idMateria}" for="idMateria" />
+                        <p:selectOneMenu id="idMateria" value="#{disponibilidadController.selected.idMateria}" >
+                            <f:selectItems value="#{materiaController.itemsAvailableSelectOne}"
+                                           var="idMateriaItem"
+                                           itemValue="#{idMateriaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{disponibilidadController.create}" value="#{bundle.Save}" update="display,:DisponibilidadListForm:datalist,:growl" oncomplete="handleSubmit(args,'DisponibilidadCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DisponibilidadCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

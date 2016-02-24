@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./TemplateEstudiante.xhtml">
+
+
+            <ui:define name="bottom">
+                <div>
+                    <h:form>
+
+                        <div align="center">
+                            <legend><h1>Preinscripcion de Materias</h1></legend>
+                        </div>
+
+                        <h2>PRIMER SEMESTRE</h2>
+                        <p:selectManyCheckbox id="grid" value="#{checkboxView.selectedSemestre1}" layout="responsive" columns="2">
+                            <f:selectItems value="#{checkboxView.semestre1}" var="semestre" itemLabel="#{semestre}" itemValue="#{semestre}" />
+                        </p:selectManyCheckbox>
+                        <h2>SEGUNDO SEMESTRE</h2>
+                        <p:selectManyCheckbox id="grid1" value="#{checkboxView.selectedSemestre2}" layout="responsive" columns="2">
+                            <f:selectItems value="#{checkboxView.semestre2}" var="semestre" itemLabel="#{semestre}" itemValue="#{semestre}" />
+                        </p:selectManyCheckbox>
+                        <h2>TERCER SEMESTRE</h2>
+                        <p:selectManyCheckbox id="grid2" value="#{checkboxView.selectedSemestre3}" layout="responsive" columns="2">
+                            <f:selectItems value="#{checkboxView.semestre3}" var="semestre" itemLabel="#{semestre}" itemValue="#{semestre}" />
+                        </p:selectManyCheckbox>
+                        <h2>CUARTO SEMESTRE</h2>
+                        <p:selectManyCheckbox id="grid3" value="#{checkboxView.selectedSemestre4}" layout="responsive" columns="2">
+                            <f:selectItems value="#{checkboxView.semestre4}" var="semestre" itemLabel="#{semestre}" itemValue="#{semestre}" />
+                        </p:selectManyCheckbox>
+                        <h2>QUINTO SEMESTRE</h2>
+                        <p:selectManyCheckbox id="grid4" value="#{checkboxView.selectedSemestre5}" layout="responsive" columns="2">
+                            <f:selectItems value="#{checkboxView.semestre5}" var="semestre" itemLabel="#{semestre}" itemValue="#{semestre}" />
+                        </p:selectManyCheckbox>
+                        <h2>SEXTO SEMESTRE</h2>
+                        <p:selectManyCheckbox id="grid5" value="#{checkboxView.selectedSemestre6}" layout="responsive" columns="2">
+                            <f:selectItems value="#{checkboxView.semestre6}" var="semestre" itemLabel="#{semestre}" itemValue="#{semestre}" />
+                        </p:selectManyCheckbox>
+                        <h2>SEPTIMO SEMESTRE</h2>
+                        <p:selectManyCheckbox id="grid6" value="#{checkboxView.selectedSemestre7}" layout="responsive" columns="2">
+                            <f:selectItems value="#{checkboxView.semestre7}" var="semestre" itemLabel="#{semestre}" itemValue="#{semestre}" />
+                        </p:selectManyCheckbox>
+                        <h2>OCTAVO SEMESTRE</h2>
+                        <p:selectManyCheckbox id="grid7" value="#{checkboxView.selectedSemestre8}" layout="responsive" columns="2">
+                            <f:selectItems value="#{checkboxView.semestre8}" var="semestre" itemLabel="#{semestre}" itemValue="#{semestre}" />
+                        </p:selectManyCheckbox>
+                        <h2>NOVENO SEMESTRE</h2>
+                        <p:selectManyCheckbox id="grid8" value="#{checkboxView.selectedSemestre9}" layout="responsive" columns="2">
+                            <f:selectItems value="#{checkboxView.semestre9}" var="semestre" itemLabel="#{semestre}" itemValue="#{semestre}" />
+                        </p:selectManyCheckbox>
+
+                        <p:separator />
+                        <div align="center">
+                            <p:commandButton value="VER MATERIAS SELECCIONADAS" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
+                        </div>
+                        <p:dialog header="ELECCION DE LAS MATERIAS DE LA PREINSCRIPCION " modal="true" showEffect="clip" widgetVar="dlg" resizable="false">
+                            <p:outputPanel id="display">
+
+                                <p:dataList value="#{checkboxView.selectedSemestre1}" var="semestre">
+                                    <f:facet name="header">
+                                        PRIMER SEMESTRE
+                                    </f:facet>
+                                    #{semestre}
+                                </p:dataList>
+                                <p:dataList value="#{checkboxView.selectedSemestre2}" var="semestre">
+                                    <f:facet name="header">
+                                        SEGUNDO SEMESTRE
+                                    </f:facet>
+                                    #{semestre}
+                                </p:dataList>
+                                <p:dataList value="#{checkboxView.selectedSemestre3}" var="semestre">
+                                    <f:facet name="header">
+                                        TERCERO SEMESTRE
+                                    </f:facet>
+                                    #{semestre}
+                                </p:dataList>
+                                <p:dataList value="#{checkboxView.selectedSemestre4}" var="semestre">
+                                    <f:facet name="header">
+                                        CUARTO SEMESTRE
+                                    </f:facet>
+                                    #{semestre}
+                                </p:dataList>
+                                <p:dataList value="#{checkboxView.selectedSemestre5}" var="semestre">
+                                    <f:facet name="header">
+                                        QUINTO SEMESTRE
+                                    </f:facet>
+                                    #{semestre}
+                                </p:dataList>
+                                <p:dataList value="#{checkboxView.selectedSemestre6}" var="semestre">
+                                    <f:facet name="header">
+                                        SEXTO SEMESTRE
+                                    </f:facet>
+                                    #{semestre}
+                                </p:dataList>
+                                <p:dataList value="#{checkboxView.selectedSemestre7}" var="semestre">
+                                    <f:facet name="header">
+                                        SEPTIMO SEMESTRE
+                                    </f:facet>
+                                    #{semestre}
+                                </p:dataList>
+                                <p:dataList value="#{checkboxView.selectedSemestre8}" var="semestre">
+                                    <f:facet name="header">
+                                        OCTAVO SEMESTRE
+                                    </f:facet>
+                                    #{semestre}
+                                </p:dataList>
+                                <p:dataList value="#{checkboxView.selectedSemestre9}" var="semestre">
+                                    <f:facet name="header">
+                                        NOVENO SEMESTRE
+                                    </f:facet>
+                                    #{semestre}
+                                </p:dataList>
+                                <div align="center">
+                                    <p:commandButton value="GUARDAR" icon="ui-icon-save" onclick="location='/Sistema_Horarios2016/faces/login.xhtml'" />
+                        </div>
+                               
+                            </p:outputPanel>
+                        </p:dialog>
+                    </h:form>
+
+
+                </div>
+            </ui:define>
+
+
+        </ui:composition>
+
+    </body>
+</html>

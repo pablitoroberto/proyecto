@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HorarioEditDlg" widgetVar="HorarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditHorarioTitle}">
+            <h:form id="HorarioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{horarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_dia}" for="dia" />
+                        <p:inputText id="dia" value="#{horarioController.selected.dia}" title="#{bundle.EditHorarioTitle_dia}" />
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_horainicio}" for="horainicio" />
+                        <p:inputText id="horainicio" value="#{horarioController.selected.horainicio}" title="#{bundle.EditHorarioTitle_horainicio}" />
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_horafinal}" for="horafinal" />
+                        <p:inputText id="horafinal" value="#{horarioController.selected.horafinal}" title="#{bundle.EditHorarioTitle_horafinal}" />
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_idDocente}" for="idDocente" />
+                        <p:selectOneMenu id="idDocente" value="#{horarioController.selected.idDocente}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{docenteController.itemsAvailableSelectOne}"
+                                           var="idDocenteItem"
+                                           itemValue="#{idDocenteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_idAula}" for="idAula" />
+                        <p:selectOneMenu id="idAula" value="#{horarioController.selected.idAula}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{aulaController.itemsAvailableSelectOne}"
+                                           var="idAulaItem"
+                                           itemValue="#{idAulaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditHorarioLabel_idMateria}" for="idMateria" />
+                        <p:selectOneMenu id="idMateria" value="#{horarioController.selected.idMateria}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{materiaController.itemsAvailableSelectOne}"
+                                           var="idMateriaItem"
+                                           itemValue="#{idMateriaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{horarioController.update}" value="#{bundle.Save}" update="display,:HorarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'HorarioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="HorarioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

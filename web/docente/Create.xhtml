@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocenteCreateDlg" widgetVar="DocenteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDocenteTitle}">
+            <h:form id="DocenteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{docenteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{docenteController.selected.nombre}" title="#{bundle.CreateDocenteTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_ci}" for="ci" />
+                        <p:inputText id="ci" value="#{docenteController.selected.ci}" title="#{bundle.CreateDocenteTitle_ci}" />
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_emailInstitucional}" for="emailInstitucional" />
+                        <p:inputText id="emailInstitucional" value="#{docenteController.selected.emailInstitucional}" title="#{bundle.CreateDocenteTitle_emailInstitucional}" />
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_emailPersonal}" for="emailPersonal" />
+                        <p:inputText id="emailPersonal" value="#{docenteController.selected.emailPersonal}" title="#{bundle.CreateDocenteTitle_emailPersonal}" />
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_categoria}" for="categoria" />
+                        <p:inputText id="categoria" value="#{docenteController.selected.categoria}" title="#{bundle.CreateDocenteTitle_categoria}" />
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_dedicacion}" for="dedicacion" />
+                        <p:inputText id="dedicacion" value="#{docenteController.selected.dedicacion}" title="#{bundle.CreateDocenteTitle_dedicacion}" />
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{docenteController.selected.estado}" title="#{bundle.CreateDocenteTitle_estado}" />
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_tiempohora}" for="tiempohora" />
+                        <p:inputText id="tiempohora" value="#{docenteController.selected.tiempohora}" title="#{bundle.CreateDocenteTitle_tiempohora}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{docenteController.create}" value="#{bundle.Save}" update="display,:DocenteListForm:datalist,:growl" oncomplete="handleSubmit(args,'DocenteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DocenteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

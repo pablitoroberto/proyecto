@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AulaViewDlg" widgetVar="AulaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAulaTitle}">
+            <h:form id="AulaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{aulaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAulaLabel_nombre}"/>
+                        <h:outputText value="#{aulaController.selected.nombre}" title="#{bundle.ViewAulaTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewAulaLabel_utilizaCarrera}"/>
+                        <h:outputText value="#{aulaController.selected.utilizaCarrera}" title="#{bundle.ViewAulaTitle_utilizaCarrera}"/>
+                        <h:outputText value="#{bundle.ViewAulaLabel_capacidad}"/>
+                        <h:outputText value="#{aulaController.selected.capacidad}" title="#{bundle.ViewAulaTitle_capacidad}"/>
+                        <h:outputText value="#{bundle.ViewAulaLabel_idTipoAula}"/>
+                        <h:outputText value="#{aulaController.selected.idTipoAula}" title="#{bundle.ViewAulaTitle_idTipoAula}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AulaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

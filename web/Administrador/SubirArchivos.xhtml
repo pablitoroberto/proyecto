@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <link href="../resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/css/default.css" rel="stylesheet" type="text/css"/>
+
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">Top</ui:insert>
+        </div>
+
+        <div id="content" class="center_content" align="center">
+
+            <p:separator />
+            <br/>
+
+            <legend><h1>SUBIR ARCHIVO EXCEL DE ESTUDIANTES</h1></legend>
+
+            <br/>
+            <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
+
+            </p:dialog>
+            <h:form>
+                <p:commandButton value="Formato de Archivo de Estudiantes" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+                    <p:fileDownload value="#{fileDownloadView.file}" />
+                </p:commandButton>
+            </h:form>
+
+            <script type="text/javascript">
+                function start() {
+                    PF('statusDialog').show();
+                }
+
+                function stop() {
+                    PF('statusDialog').hide();
+                }
+            </script>
+            <br/>
+
+            <br/>
+            <h:form enctype="multipart/form-data">
+                <p:fileUpload fileUploadListener="#{fileUploadView.uploadEstudiantes}" mode="advanced" dragDropSupport="false"
+                              update="messages" sizeLimit="20000000" fileLimit="1" allowTypes="/(\.|\/)(xls|xlsx)$/" />
+
+                <p:growl id="messages" showDetail="true" />
+            </h:form>       
+            <br/>
+            <br/>
+            <p:separator />
+            <br/>
+            <legend><h1>SUBIR ARCHIVO EXCEL DE DOCENTES</h1></legend>
+            <br/>
+            <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
+
+            </p:dialog>
+            <h:form>
+
+                <p:commandButton value="Formato de Archivo de Docentes" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+                    <p:fileDownload value="#{fileDownloadView.file1}" />
+                </p:commandButton>
+
+
+            </h:form>
+
+            <script type="text/javascript">
+                function start() {
+                    PF('statusDialog').show();
+                }
+
+                function stop() {
+                    PF('statusDialog').hide();
+                }
+            </script>
+            <br/>
+
+            <h:form enctype="multipart/form-data">
+                <p:fileUpload fileUploadListener="#{fileUploadView.uploadDocente}" mode="advanced" dragDropSupport="false"
+                              update="messages" sizeLimit="20000000" fileLimit="1" allowTypes="/(\.|\/)(xls|xlsx)$/" />
+
+                <p:growl id="messages" showDetail="true" />
+            </h:form>  
+
+            <br/>
+            <p:separator />
+
+        </div>
+
+        <div id="bottom">
+            <ui:insert name="bottom">Bottom</ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

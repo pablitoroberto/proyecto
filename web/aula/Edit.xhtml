@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AulaEditDlg" widgetVar="AulaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAulaTitle}">
+            <h:form id="AulaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{aulaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAulaLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{aulaController.selected.nombre}" title="#{bundle.EditAulaTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditAulaLabel_utilizaCarrera}" for="utilizaCarrera" />
+                        <p:inputText id="utilizaCarrera" value="#{aulaController.selected.utilizaCarrera}" title="#{bundle.EditAulaTitle_utilizaCarrera}" />
+                        <p:outputLabel value="#{bundle.EditAulaLabel_capacidad}" for="capacidad" />
+                        <p:inputText id="capacidad" value="#{aulaController.selected.capacidad}" title="#{bundle.EditAulaTitle_capacidad}" />
+                        <p:outputLabel value="#{bundle.EditAulaLabel_idTipoAula}" for="idTipoAula" />
+                        <p:selectOneMenu id="idTipoAula" value="#{aulaController.selected.idTipoAula}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoAulaController.itemsAvailableSelectOne}"
+                                           var="idTipoAulaItem"
+                                           itemValue="#{idTipoAulaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{aulaController.update}" value="#{bundle.Save}" update="display,:AulaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AulaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AulaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

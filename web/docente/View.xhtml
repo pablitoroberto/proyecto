@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocenteViewDlg" widgetVar="DocenteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDocenteTitle}">
+            <h:form id="DocenteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{docenteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDocenteLabel_nombre}"/>
+                        <h:outputText value="#{docenteController.selected.nombre}" title="#{bundle.ViewDocenteTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_ci}"/>
+                        <h:outputText value="#{docenteController.selected.ci}" title="#{bundle.ViewDocenteTitle_ci}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_emailInstitucional}"/>
+                        <h:outputText value="#{docenteController.selected.emailInstitucional}" title="#{bundle.ViewDocenteTitle_emailInstitucional}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_emailPersonal}"/>
+                        <h:outputText value="#{docenteController.selected.emailPersonal}" title="#{bundle.ViewDocenteTitle_emailPersonal}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_categoria}"/>
+                        <h:outputText value="#{docenteController.selected.categoria}" title="#{bundle.ViewDocenteTitle_categoria}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_dedicacion}"/>
+                        <h:outputText value="#{docenteController.selected.dedicacion}" title="#{bundle.ViewDocenteTitle_dedicacion}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_estado}"/>
+                        <h:outputText value="#{docenteController.selected.estado}" title="#{bundle.ViewDocenteTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewDocenteLabel_tiempohora}"/>
+                        <h:outputText value="#{docenteController.selected.tiempohora}" title="#{bundle.ViewDocenteTitle_tiempohora}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DocenteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

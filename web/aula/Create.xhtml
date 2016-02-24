@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AulaCreateDlg" widgetVar="AulaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAulaTitle}">
+            <h:form id="AulaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{aulaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateAulaLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{aulaController.selected.nombre}" title="#{bundle.CreateAulaTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateAulaLabel_utilizaCarrera}" for="utilizaCarrera" />
+                        <p:inputText id="utilizaCarrera" value="#{aulaController.selected.utilizaCarrera}" title="#{bundle.CreateAulaTitle_utilizaCarrera}" />
+                        <p:outputLabel value="#{bundle.CreateAulaLabel_capacidad}" for="capacidad" />
+                        <p:inputText id="capacidad" value="#{aulaController.selected.capacidad}" title="#{bundle.CreateAulaTitle_capacidad}" />
+                        <p:outputLabel value="#{bundle.CreateAulaLabel_idTipoAula}" for="idTipoAula" />
+                        <p:selectOneMenu id="idTipoAula" value="#{aulaController.selected.idTipoAula}" >
+                            <f:selectItems value="#{tipoAulaController.itemsAvailableSelectOne}"
+                                           var="idTipoAulaItem"
+                                           itemValue="#{idTipoAulaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{aulaController.create}" value="#{bundle.Save}" update="display,:AulaListForm:datalist,:growl" oncomplete="handleSubmit(args,'AulaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AulaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
